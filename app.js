@@ -1,9 +1,13 @@
+const path = require('path');
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const { PriorityQueue } = require('@datastructures-js/priority-queue');
 
 const app = express();
 const port = 3000;
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 const db = new sqlite3.Database('./routing.db');
 

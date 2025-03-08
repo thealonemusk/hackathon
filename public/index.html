@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Routing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Routing Optimizer</h1>
+        
+        <div class="input-group">
+            <label>From Bank BIC:</label>
+            <input type="text" id="fromBank" placeholder="e.g., ABBBAU33XXX">
+        </div>
+
+        <div class="input-group">
+            <label>To Bank BIC:</label>
+            <input type="text" id="toBank" placeholder="e.g., UBBBSGSGXXX">
+        </div>
+
+        <div class="button-group">
+            <button onclick="getRoute('fastest')">Find Fastest Route</button>
+            <button onclick="getRoute('cheapest')">Find Cheapest Route</button>
+        </div>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
