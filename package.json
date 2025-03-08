@@ -1,0 +1,27 @@
+{
+  "name": "hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thealonemusk/hackathon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/thealonemusk/hackathon/issues"
+  },
+  "homepage": "https://github.com/thealonemusk/hackathon#readme",
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^6.3.2",
+    "csv-parser": "^3.2.0",
+    "express": "^4.21.2",
+    "sqlite3": "^5.1.7"
+  }
+}
