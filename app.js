@@ -58,7 +58,35 @@ function dijkstra(graph, start, end, weightKey) {
     return { path, distance: distances[end] };
 }
 
-// Build graphs from database
+// Build graphs from database - source added but not dest
+// async function buildGraphs() {
+//     const banks = await runQuery("SELECT * FROM banks");
+//     const links = await runQuery("SELECT * FROM links");
+
+//     const G_cost = {};
+//     const G_time = {};
+
+//     // Initialize nodes
+//     for (const bank of banks) {
+//         G_cost[bank.BIC] = [];
+//         G_time[bank.BIC] = [];
+//     }
+
+//     // Add edges
+//     for (const link of links) {
+//         const from = link.FromBIC;
+//         const to = link.ToBIC;
+//         const time = link.TimeTakenInMinutes;
+//         const charge = banks.find(b => b.BIC === from).Charge;
+
+//         G_time[from].push({ to, weight: time });
+//         G_cost[from].push({ to, weight: charge });
+//     }
+
+//     return { G_cost, G_time };
+// }
+
+// Build graphs from database - destination added but not source
 async function buildGraphs() {
     const banks = await runQuery("SELECT * FROM banks");
     const links = await runQuery("SELECT * FROM links");
@@ -77,10 +105,11 @@ async function buildGraphs() {
         const from = link.FromBIC;
         const to = link.ToBIC;
         const time = link.TimeTakenInMinutes;
-        const charge = banks.find(b => b.BIC === from).Charge;
+        // Use ToBIC's charge instead of FromBIC's
+        const charge = banks.find(b => b.BIC === to).Charge; // Changed to 'to'
 
         G_time[from].push({ to, weight: time });
-        G_cost[from].push({ to, weight: charge });
+        G_cost[from].push({ to, weight: charge }); // Now uses ToBIC's charge
     }
 
     return { G_cost, G_time };
